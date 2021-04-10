@@ -2,35 +2,32 @@
 #include<map>
 #include<string>
 using namespace std;
-
-typedef map<string,int> obj;
-
+typedef map<string,int> item_map;
 int main()
 {
-	int size;
-	string name;
-	int code;
-	obj object;
-	char ch='y';
-	do
+	int sz;
+	string item_name;
+	int codeno;
+	item_map item;
+	cout<<"enter item name and code no number for 2 items: \n";
+	for(int i=0;i<2;i++)
 	{
-		cout<<"\n Enter object name : ";
-		cin>>name;  
-		cout<<"\n Enter code number : ";
-		cin>>code;
-		object[name]=code;
-		cout<<"\n Want to Enter more (Y/N): ";
-		cin>>ch;
-	}while(ch=='y'||ch=='Y');
-	size=object.size();
-	cout<<"\n Size of map : "<<size<<endl;
-	cout<<"\n Objects names and code numbers are : "<<endl;
-	obj::iterator i;
-	for(i=object.begin();i!=object.end();i++)
-		cout<<(*i).first<<" "<<(*i).second<<endl;
-	cout<<"\n Enter object name : ";
-	cin>>name;
-	code=object[name];
-	cout<<"\n Code number : "<<code<<endl;
+		cin>>item_name;
+		cin>>codeno;
+		item[item_name]=codeno;
+	}
+	item["pc"]=2510;
+	item.insert(pair<string,int> ("printer",2211));
+	sz=item.size();
+	cout<<"\n size of map:"<<sz<<"\n\n";
+	cout<<"list of item name and code numbers \n";
+	item_map::iterator t;
+	for(t=item.begin();t!=item.end();t++)
+	cout<<(*t).first <<" "<<(*t).second<<"\n";
+	cout<<"\n";
+	cout<<"enter item name:";
+	cin>>item_name;
+	codeno=item[item_name];
+	cout<<"code number:"<<codeno<<"\n";
 	return 0;
 }
